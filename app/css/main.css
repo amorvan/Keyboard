@@ -639,9 +639,6 @@ body ul li {
       text-align: center;
       background: beige;*/
 }
-body ul li#switch {
-  background: blanchedalmond;
-}
 body ul li span {
   cursor: pointer;
   -moz-user-select: none;
