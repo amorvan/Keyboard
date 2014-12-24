@@ -1,39 +1,3 @@
-/*$(function(){
-
-const _PADD_VERR = 'pad',
-      _NUM_VERR = 'num';
-
-var switchKey = $('li.switchpad'),
-    shiftKey = $('li.shift'),
-    listTouch = $('.keyboard li').find('div');
-
-    switchKey.click(function(){
-        $(this).toggleClass(_PADD_VERR+' '+_NUM_VERR);
-        var tclass = $(this).attr('class').split(' ').pop();
-
-        listTouch.hide();
-        listTouch.each(function() {
-            if($(this).hasClass(tclass)){
-                $(this).show();
-            }
-        });
-    });
-
-    // switch shift keys
-    shiftKey.click(function(){
-        $(this).toggleClass('active');
-        listTouch.filter('.' + _NUM_VERR).children().hide();
-        if((switchKey.hasClass(_NUM_VERR)) && shiftKey.hasClass('active')){
-          listTouch.filter('.' + _NUM_VERR).children('.shift').css('display','block');
-        } else {
-            listTouch.filter('.' + _NUM_VERR).children('.none').css('display','block');
-        }
-
-    });
-
-});*/
-
-
 var keyboard = function(mode,langue,os){
 
     this.mode = mode;
@@ -42,16 +6,16 @@ var keyboard = function(mode,langue,os){
     this.os = os;
     this.switch = '123';
     this.controls = {
-        1 : 'Esc', 2 : 'Tab', 3 : 'Shift', 4 : 'Ctrl', 5 : 'Alt', 6 : 'Cmd', 7 : 'Space'
+        esc : 'Esc', tab : 'Tab', shift : '', ctrl : 'Ctrl', alt : '', cmd : '', space : 'Space'
     }
     this.touches = {
         PAD :
             {
-              _default : { 1 : 'A', 2 : 'Z', 3 : 'E', 4 : 'R', 5 : 'T', 6 : 'Y', 7 : 'U', 8 : 'I', 9 : 'O', 10 : 'P', 11 : 'Q', 12 : 'S', 13 : 'D',14 : 'F',15 : 'G',16 : 'H',17 : 'J',18 : 'K',19 : 'L',20 : 'M',21 : 'W',22 : 'X',23 : 'C',24 : 'V',25 : 'B',26 : 'N', 27 : '<--', 28 : 'Enter', 29 : '123' },
+              _default : { 1 : 'A', 2 : 'Z', 3 : 'E', 4 : 'R', 5 : 'T', 6 : 'Y', 7 : 'U', 8 : 'I', 9 : 'O', 10 : 'P', 11 : 'Q', 12 : 'S', 13 : 'D',14 : 'F',15 : 'G',16 : 'H',17 : 'J',18 : 'K',19 : 'L',20 : 'M',21 : 'W',22 : 'X',23 : 'C',24 : 'V',25 : 'B',26 : 'N', cancel : '', enter : '', 29 : '123' },
               _shift : { 1:'F1',2 : 'F2',3 : 'F3',4 : 'F4',5 : 'F5',6 : 'F6',7 : 'F7', 8 : 'F8', 9 : 'F9' }
             },
         NUM :
-            {   _default : { 1 : '1', 2 : '2', 3 : '3', 4 : '4', 5 : '5', 6 : '6', 7 : '7', 8 : '8', 9 : '9', 10 : '0', 11 : '@', 12 : '#', 13 : '$', 14 : '%', 15 : '&', 16 : '*', 17 : '-', 18 : '+', 19 : '(', 20 : ')', 21 : '!', 22 : '"', 23 : '"', 24 : ':', 25 : ';', 26 : '/', 27 : '<--', 28 : 'Enter', 29 : 'ABC' },
+            {   _default : { 1 : '1', 2 : '2', 3 : '3', 4 : '4', 5 : '5', 6 : '6', 7 : '7', 8 : '8', 9 : '9', 10 : '0', 11 : '@', 12 : '#', 13 : '$', 14 : '%', 15 : '&', 16 : '*', 17 : '-', 18 : '+', 19 : '(', 20 : ')', 21 : '!', 22 : '"', 23 : '"', 24 : ':', 25 : ';', 26 : '/', cancel : '', enter : '', 29 : 'ABC' },
                 _shift : { 1:'F1', 2 : 'F2', 3 : 'F3', 4 : 'F4', 5 : 'F5', 6 : 'F6', 7 : 'F7', 8 : 'F8', 9 : 'F9' }
             }
         }
@@ -67,15 +31,16 @@ var keyboard = function(mode,langue,os){
             li.className = 'col-mb-1';
 
             span = document.createElement('span');
+            id == 'cmd' ? span.className = 'icon icon_mac_'+id : span.className = 'icon icon_'+id;
             txt = document.createTextNode(touch[id]);
 
-            id == 7 ? li.className = 'col-mb-4' : '';
+            id == 'space' ? li.className = 'col-mb-4' : '';
 
 
             span.appendChild(txt);
             li.appendChild(span);
             container.appendChild(li);
-            if(id == 3){
+            if(id == 'shift'){
                 li.onclick = function(){
                     el.switchControl(this,'_shift');
                 }
@@ -116,7 +81,11 @@ var keyboard = function(mode,langue,os){
                     }
                 }
 
-                id == 28 ? li.className = 'col-mb-2' : '';
+                if(id == 'enter'){
+                    li.className = 'col-mb-2';
+                    span.className = 'icon icon_'+id;
+                }
+                id == 'cancel' ? span.className = 'icon icon_'+id : '';
 
                 txt = document.createTextNode(touches[id]);
                 span.appendChild(txt);
@@ -179,8 +148,6 @@ var keyboard = function(mode,langue,os){
 }
 
 var DefaultKeyb = new keyboard('PAD','fr','mac');
-var switchEl = document.querySelector('#switch');
-
 
 
 

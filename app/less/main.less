@@ -53,7 +53,15 @@ body{
           box-shadow: 0 0.3em 0.3em rgba(255, 255, 255, 0.6) inset, 0 -0.1em 0.3em rgba(0, 0, 0, 0.2) inset, 0 0.1em 1px rgba(0, 0, 0, 0.4), 0 0.2em 6px rgba(0, 0, 0, 0.2);
           transform: translateY(0.2em);
         }
-
+        &.icon{
+          display:block;
+          line-height:3em;
+        }
+        &.icon_enter{
+          font-size: 4vw;
+          height: 2.24em;
+          line-height:2.24em;
+        }
 
       }
       div,strong{
@@ -77,7 +85,7 @@ body{
         }
       }
 
-      &.active{
+      &.active,&._shift{
         span{
           background-color: hsl(0, 0%, 83%);
           box-shadow: 0 0.3em 0.3em rgba(255, 255, 255, 0.6) inset, 0 -0.1em 0.3em rgba(0, 0, 0, 0.2) inset, 0 0.1em 1px rgba(0, 0, 0, 0.4), 0 0.2em 6px rgba(0, 0, 0, 0.2);

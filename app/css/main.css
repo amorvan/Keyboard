@@ -673,6 +673,15 @@ body ul li span:active {
   box-shadow: 0 0.3em 0.3em rgba(255, 255, 255, 0.6) inset, 0 -0.1em 0.3em rgba(0, 0, 0, 0.2) inset, 0 0.1em 1px rgba(0, 0, 0, 0.4), 0 0.2em 6px rgba(0, 0, 0, 0.2);
   transform: translateY(0.2em);
 }
+body ul li span.icon {
+  display: block;
+  line-height: 3em;
+}
+body ul li span.icon_enter {
+  font-size: 4vw;
+  height: 2.24em;
+  line-height: 2.24em;
+}
 body ul li div.num,
 body ul li strong.num {
   display: none;
@@ -693,7 +702,8 @@ body ul li div.pad span.us,
 body ul li strong.pad span.us {
   display: none;
 }
-body ul li.active span {
+body ul li.active span,
+body ul li._shift span {
   background-color: #d4d4d4;
   box-shadow: 0 0.3em 0.3em rgba(255, 255, 255, 0.6) inset, 0 -0.1em 0.3em rgba(0, 0, 0, 0.2) inset, 0 0.1em 1px rgba(0, 0, 0, 0.4), 0 0.2em 6px rgba(0, 0, 0, 0.2);
   transform: translateY(0.2em);

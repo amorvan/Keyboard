@@ -13,10 +13,23 @@ module.exports = function(grunt){
             },
             files: {
                 "app/css/main.css": "app/less/main.less",
-                "app/css/fluidable.css": "app/less/fluidable.less"
+                "app/css/fluidable.css": "app/less/fluidable.less",
+                "app/css/icons.css": "app/less/icons.less"
             }
     }
 
+    },
+
+    webfont: {
+        icons: {
+            src: 'app/fonts/svg/*.svg',
+            dest: 'app/css',
+            destCss: 'app/less',
+            options: {
+                stylesheet: 'less',
+                relativeFontPath: '../../app/css'
+            }
+        }
     },
 
     watch: {
@@ -34,5 +47,6 @@ module.exports = function(grunt){
 
     grunt.registerTask('default',['less']);
     grunt.registerTask('watchcss',['watch:less']);
+    grunt.registerTask('genfont',['webfont']);
 
 }
